@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Krista Schouwstra Portfolio</title>
+<meta name="description" content="Portfolio van Krista Schouwstra, startende software developer (HBO-ICT, Hogeschool Utrecht) met een hart voor communicatie.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Krista Schouwstra, software developer">
+<meta property="og:description" content="Software developer met een hart voor mensen en techniek. Bekijk mijn projecten en neem contact op.">
+<meta property="og:image" content="https://kristaschouwstra.github.io/preview.jpg">
+<meta property="og:url" content="https://kristaschouwstra.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2316202E'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23F7E6EE'%3EKS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: één linker leeslijn; elk project is een "vertaling" in twee kolommen: mensen ↔ techniek */
+:root{
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#16202E; --muted:#556275; --line:#D8DEE7;
+  --people:#A8285F; --people-soft:#F7E6EE; --code:#2253A3; --code-soft:#E3ECFA;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10151D; --surface:#171F2A; --ink:#E7ECF2; --muted:#9BA7B8; --line:#2A3443;
+  --people:#F27DAE; --people-soft:#3A1F2C; --code:#86ADF2; --code-soft:#1B2A44; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10151D; --surface:#171F2A; --ink:#E7ECF2; --muted:#9BA7B8; --line:#2A3443;
+  --people:#F27DAE; --people-soft:#3A1F2C; --code:#86ADF2; --code-soft:#1B2A44; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--code);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0;letter-spacing:-.015em}
+p{margin:0}
+.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.05rem;text-decoration:none}
+.brand span{color:var(--people)}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem}
+nav a:hover{color:var(--ink)}
+@media (max-width:560px){nav li.opt{display:none}}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;padding-block:72px 64px}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4.1rem);font-weight:800}
+.hero h1 .p{color:var(--people)} .hero h1 .c{color:var(--code)}
+.hero .lead{margin-top:22px;font-size:1.2rem;color:var(--muted);max-width:36em}
+.hero .who{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 24px}
+.hero .who div{display:flex;flex-direction:column;gap:2px}
+.hero .who strong{font-weight:700}
+.actions{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--ink);font-size:.98rem;background:transparent;color:var(--ink);cursor:pointer;font-family:var(--body)}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn:hover{transform:translateY(-1px)}
+
+/* the translation exhibit */
+.exhibit{display:flex;flex-direction:column;gap:14px;min-width:0}
+.bubble{background:var(--people-soft);color:var(--ink);border-radius:18px 18px 18px 4px;padding:16px 18px;max-width:92%}
+.bubble.answer{align-self:flex-end;border-radius:18px 18px 4px 18px;background:var(--surface);border:1px solid var(--line)}
+.bubble .label{display:block;margin-bottom:4px}
+.bubble.q .label{color:var(--people)}
+.term{background:var(--code-soft);border-radius:14px;padding:14px 16px;font-family:var(--mono);font-size:.9rem;color:var(--ink);overflow-x:auto}
+.term .label{color:var(--code);display:block;margin-bottom:6px;font-size:.7rem}
+.term code::before{content:"$ ";color:var(--code)}
+.exhibit .cap{font-size:.85rem;color:var(--muted)}
+.exhibit > *{animation:rise .6s both}
+.exhibit > *:nth-child(2){animation-delay:.25s}.exhibit > *:nth-child(3){animation-delay:.5s}.exhibit > *:nth-child(4){animation-delay:.7s}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+
+/* vision */
+section{scroll-margin-top:72px}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.vision .wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;padding-block:72px}
+.vision h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.vision .text{display:flex;flex-direction:column;gap:16px;max-width:40em}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;padding:0;list-style:none}
+.roles li{padding:6px 12px;border-radius:999px;border:1px solid var(--line);font-size:.92rem;background:var(--bg)}
+
+/* projects */
+.projects .wrap{padding-block:80px 40px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:0}
+.dot.p{background:var(--people)} .dot.c{background:var(--code)}
+
+.project{border-top:2px solid var(--ink);padding-block:36px 48px;display:grid;grid-template-columns:260px 1fr;gap:40px}
+.project .meta{display:flex;flex-direction:column;gap:14px}
+.project .year{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;color:var(--muted)}
+.project dl{margin:0;display:grid;gap:10px}
+.kind{display:inline-block;align-self:flex-start;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--people-soft);color:var(--people);font-weight:500}
+.yearbox{display:flex;flex-direction:column;gap:10px}
+.project dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.project dd{margin:0;font-size:.95rem}
+.project .main{min-width:0;display:flex;flex-direction:column;gap:22px}
+.project h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700}
+.project .sub{font-size:1.15rem;color:var(--muted);max-width:42em}
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.side{border-radius:14px;padding:20px 22px;min-width:0}
+.side.p{background:var(--people-soft)} .side.c{background:var(--code-soft)}
+.side h4{margin:0 0 10px;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.side.p h4{color:var(--people)} .side.c h4{color:var(--code)}
+.side ul{margin:0;padding-left:1.1em;display:grid;gap:7px}
+.side li{font-size:.98rem}
+.learn{border-left:3px solid var(--people);padding-left:16px;max-width:44em;font-style:italic}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tags li{font-family:var(--mono);font-size:.78rem;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--surface)}
+figure{margin:0;display:flex;flex-direction:column;gap:8px}
+figure .frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:.85rem;color:var(--muted)}
+.link{font-weight:700;color:var(--code);text-decoration:none;border-bottom:2px solid currentColor;align-self:flex-start}
+.note{font-size:.9rem;color:var(--muted)}
+
+/* me */
+.me{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.me img{width:76px;height:76px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--people)}
+.me strong{display:block;font-family:var(--display);font-size:1.15rem}
+.me .label{margin-top:2px}
+
+/* path / timeline */
+.path .wrap{padding-block:72px;display:grid;grid-template-columns:300px 1fr;gap:48px}
+.path h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.langs{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.langs strong{color:var(--ink)}
+.timeline{list-style:none;margin:0;padding:0;position:relative;display:flex;flex-direction:column;gap:0;min-width:0}
+.timeline li{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:0 0 30px;position:relative}
+.timeline li::before{content:"";position:absolute;left:150px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--code)}
+.timeline li.t-work::before{background:var(--people)}
+.timeline li::after{content:"";position:absolute;left:155px;top:24px;bottom:-4px;width:2px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+.timeline li > div{padding-left:24px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.timeline h3{font-size:1.2rem;font-weight:700}
+.timeline .when{font-family:var(--mono);font-size:.85rem;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.timeline .where{color:var(--muted);font-weight:700;font-size:.95rem}
+@media (max-width:900px){.path .wrap{grid-template-columns:1fr;gap:28px}}
+@media (max-width:560px){
+  .timeline li{grid-template-columns:1fr;gap:4px;padding-left:28px}
+  .timeline li::before{left:0}
+  .timeline li::after{left:5px}
+  .timeline li > div{padding-left:0}
+}
+
+/* way of working */
+.how .wrap{padding-block:72px}
+.how h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:36px}
+.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+.how-item{padding:26px 28px 28px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+.how-item:nth-child(odd){border-right:1px solid var(--line)}
+.how-item:nth-child(even){padding-left:28px;padding-right:0}
+.how-item h3{font-size:1.3rem;font-weight:700}
+.how-item .from{font-size:.88rem;color:var(--people);font-family:var(--mono)}
+
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:56px}
+.tools div{display:flex;flex-direction:column;gap:10px;min-width:0}
+
+/* contact */
+.contact{background:linear-gradient(135deg,var(--people-soft),var(--code-soft))}
+.contact .wrap{padding-block:88px 96px;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.cintro{display:flex;flex-direction:column;gap:18px;min-width:0}
+.contact h2{font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800}
+.cintro p:not(.label){color:var(--muted);font-size:1.1rem;max-width:34em}
+.cards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.ccard{display:flex;align-items:center;gap:16px;padding:16px 16px 16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgba(20,30,50,.05),0 8px 24px -12px rgba(20,30,50,.18);transition:transform .2s,box-shadow .2s}
+.ccard:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(20,30,50,.05),0 14px 30px -12px rgba(20,30,50,.25)}
+.ico{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--code-soft);color:var(--code)}
+.ccard:nth-child(2) .ico{background:var(--people-soft);color:var(--people)}
+.cbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.cbody .label{font-size:.68rem}
+.val{font-size:1.08rem;font-weight:700;overflow-wrap:anywhere;user-select:all}
+.cbtn{flex:none;font:inherit;font-size:.9rem;font-weight:700;padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;text-decoration:none;white-space:nowrap}
+.cbtn:hover{border-color:var(--ink)}
+.cbtn.done{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.copied{grid-column:2;font-size:.9rem;color:var(--code);min-height:1.4em;margin-top:-40px}
+@media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:32px}.copied{grid-column:1;margin-top:-20px}}
+@media (max-width:520px){.ccard{display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:16px;row-gap:12px}.cbtn{grid-column:2;justify-self:start}.val{font-size:.98rem}}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+
+@media (max-width:900px){
+  .hero .wrap,.vision .wrap{grid-template-columns:1fr;gap:40px}
+  .project{grid-template-columns:1fr;gap:20px}
+  .project .meta{flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:20px}
+  .project dl{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));flex:1;min-width:0}
+  .tools{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .hero .wrap{padding-block:48px}
+  .sides,.how-grid{grid-template-columns:1fr}
+  .how-item,.how-item:nth-child(even){padding:22px 0;border-right:0}
+  .tools{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Krista Schouwstra<span>.</span></a>
+    <nav aria-label="Hoofdmenu">
+      <ul>
+        <li><a href="#projecten">Projecten</a></li>
+        <li class="opt"><a href="#visie">Visie</a></li>
+        <li class="opt"><a href="#opleiding">Opleiding</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <div class="me">
+          <img src="krista.jpg" alt="Portretfoto van Krista Schouwstra" width="320" height="320">
+          <div><strong>Krista Schouwstra</strong><p class="label">Software developer · HBO-ICT · Hogeschool Utrecht</p></div>
+        </div>
+        <h1 id="hero-title" style="margin-top:14px">Ik bouw software, en ik praat graag met de <span class="p">mensen</span> voor wie die <span class="c">software</span> is.</h1>
+        <p class="lead">Ik ben Krista, startende ICT'er. Tijdens mijn opleiding Software Development werkte ik aan systemen voor Defensie, voor zorg rond dementie en voor gedragsonderzoek. Het leukste deel vond ik steeds hetzelfde: uitzoeken wat iemand echt nodig heeft, en dat helder maken voor het team en voor de opdrachtgever.</p>
+        <div class="actions">
+          <a class="btn solid" href="#projecten">Bekijk mijn projecten</a>
+          <a class="btn" href="CV-Krista-Schouwstra.pdf" target="_blank" rel="noopener">Download mijn cv</a>
+        </div>
+      </div>
+
+      <div class="exhibit" aria-label="Voorbeeld uit het DRAS-RT project: een vraag aan de opdrachtgever wordt een technische eis">
+        <div class="bubble q"><span class="label">Ons team vraagt de opdrachtgever</span>Wanneer is de overdracht van het systeem geslaagd?</div>
+        <div class="bubble answer"><span class="label">Opdrachtgever</span>Als de ontvanger het systeem kan opstarten en een database dump kan importeren. Dat is het enige harde criterium.</div>
+        <div class="term"><span class="label">Wordt in de repository</span><code>docker compose up -d</code></div>
+        <p class="cap">Uit het overdrachtsinterview van DRAS-RT. Eén antwoord bepaalde hoe we de hele repository inrichtten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision band" id="visie" aria-labelledby="visie-title">
+    <div class="wrap">
+      <div>
+        <p class="label">Waar ik naartoe wil</p>
+        <h2 id="visie-title" style="margin-top:12px">Techniek begrijpen, en het gesprek erover voeren.</h2>
+      </div>
+      <div class="text">
+        <p>Ik heb geleerd om te programmeren, maar ik merk dat ik het meest geef om de momenten tussen het programmeren door. Een interview in een verzorgingstehuis. De stand-up leiden als scrum master. Een technisch onderzoek omzetten naar een advies dat een manager in vijf minuten kan lezen.</p>
+        <p>Ik ben nog aan het ontdekken welke vorm dat precies krijgt. Wel weet ik zeker dat ik een rol zoek waarin ik met mensen werk en mijn technische achtergrond gebruik om te begrijpen wat er wel en niet kan. Rollen die me aanspreken:</p>
+        <ul class="roles" aria-label="Rollen die me aanspreken">
+          <li>Functioneel analist</li>
+          <li>Business analist</li>
+          <li>Requirements engineer</li>
+          <li>Product owner</li>
+          <li>Scrum master</li>
+          <li>IT-consultant</li>
+          <li>Implementatie &amp; klantcontact</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projecten" aria-labelledby="proj-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="label">Werk uit mijn opleiding</p>
+          <h2 id="proj-title" style="margin-top:12px">Vier projecten, steeds twee kanten</h2>
+        </div>
+        <div class="legend"><span><span class="dot p"></span>De mensen</span><span><span class="dot c"></span>De techniek</span></div>
+      </div>
+
+      <!-- Affect-us -->
+      <article class="project" aria-labelledby="p2">
+        <div class="meta">
+          <div class="yearbox"><div class="year">Nu</div><span class="kind">Afstudeerproject</span></div>
+          <dl>
+            <div><dt>Organisatie</dt><dd>Academische werkplaats Affect-us</dd></div>
+            <div><dt>Gebruikers</dt><dd>Onderzoekers die opgenomen sessies met deelnemers analyseren</dd></div>
+            <div><dt>Vorm</dt><dd>Individueel afstudeerproject, gewerkt met user, research en learning stories</dd></div>
+          </dl>
+        </div>
+        <div class="main">
+          <div>
+            <p class="label">Afstuderen · Academische werkplaats Affect-us</p>
+            <h3 id="p2" style="margin-top:8px">Spraak en beweging uit video, zonder dat beelden het gebouw verlaten</h3>
+          </div>
+          <p class="sub">Onderzoekers bekijken urenlang video om te zien hoe deelnemers praten en bewegen. Deze tool doet een eerste analyse automatisch: hij schrijft spraak uit, meet het spreektempo per minuut en herkent houding en beweging. Sessies zijn daarna naast elkaar te vergelijken.</p>
+          <div class="sides">
+            <div class="side p">
+              <h4>De mensen</h4>
+              <ul>
+                <li>Privacy als uitgangspunt: alle analyse draait lokaal, er gaat geen beeld naar buiten</li>
+                <li>Rechten per gebruiker, zodat onderzoekers alleen de sessies zien die ze mogen zien</li>
+                <li>Uitkomsten in gewone zinnen, zoals welke sessie het hoogst scoort en waarom</li>
+                <li>Eerlijk over de grenzen: de maten zijn om opnames te vergelijken, niet als klinische meting</li>
+              </ul>
+            </div>
+            <div class="side c">
+              <h4>De techniek</h4>
+              <ul>
+                <li>FastAPI-backend met MySQL, SQLAlchemy en Alembic-migraties</li>
+                <li>Spraakherkenning met Whisper (faster-whisper)</li>
+                <li>Houdingsherkenning met MediaPipe Pose</li>
+                <li>Streamlit-dashboard met inloggen (JWT) en sessie-uploads</li>
+                <li>Geautomatiseerde tests in GitHub Actions, inclusief permissies en race conditions</li>
+              </ul>
+            </div>
+          </div>
+          <p class="learn">In dit project werk ik alleen, dus de afstemming met de onderzoekers ligt helemaal bij mij. Daardoor groeien vooral mijn communicatievaardigheden: goede vragen stellen, verwachtingen bespreken en technische keuzes uitleggen aan mensen zonder ICT-achtergrond.</p>
+          <ul class="tags" aria-label="Technieken"><li>Python</li><li>FastAPI</li><li>MySQL</li><li>Whisper</li><li>MediaPipe</li><li>Streamlit</li><li>Pytest</li></ul>
+        </div>
+      </article>
+
+      <!-- DRAS-RT -->
+      <article class="project" aria-labelledby="p1">
+        <div class="meta">
+          <div class="year">2026</div>
+          <dl>
+            <div><dt>Opdrachtgever</dt><dd>Lectoraat Procesinnovatie &amp; Informatiesystemen (HU), namens het Ministerie van Defensie</dd></div>
+            <div><dt>Partners</dt><dd>Fugro, HAS, Saxion</dd></div>
+            <div><dt>Team</dt><dd>6 studenten, Software Development en Cyber Security &amp; Cloud</dd></div>
+            <div><dt>Vak</dt><dd>Innovation-semester</dd></div>
+          </dl>
+        </div>
+        <div class="main">
+          <div>
+            <p class="label">DRAS-RT · Defenders of Litouwen</p>
+            <h3 id="p1" style="margin-top:8px">Data pipeline from server to soldier</h3>
+          </div>
+          <p class="sub">Militaire voertuigen raken vast in natte grond. De draagkracht van de bodem wordt nu met de hand gemeten, vaak onder tijdsdruk. Wij bouwden een proof-of-concept die weer- en satellietdata ophaalt, de draagkracht berekent en die op een kaart laat zien voor commandanten.</p>
+          <div class="sides">
+            <div class="side p">
+              <h4>De mensen</h4>
+              <ul>
+                <li>Stakeholderanalyse met invloed/belang-matrix</li>
+                <li>Persona's voor de opdrachtgever, de commandant en de genist</li>
+                <li>Interview met de opdrachtgever over de overdracht, vertaald naar concrete aanbevelingen</li>
+                <li>Documentatie geschreven voor drie mogelijke opvolgers: een Defensie-team, nieuwe HU-studenten of een andere opleiding</li>
+                <li>Adviesrapport met afwegingen per technische keuze</li>
+              </ul>
+            </div>
+            <div class="side c">
+              <h4>De techniek</h4>
+              <ul>
+                <li>ETL-pipeline in Go die elke 8 uur KNMI-weerdata en Sentinel-satellietbeelden verwerkt</li>
+                <li>PostgreSQL + PostGIS en GeoServer (WMS/WFS) voor kaartlagen</li>
+                <li>SvelteKit-frontend met kaartweergave en export van meetpunten</li>
+                <li>Docker Compose, Nginx reverse proxy, CI/CD met GitHub Actions</li>
+                <li>Monitoring met Prometheus, Grafana en Loki, plus backup-runbook</li>
+              </ul>
+            </div>
+          </div>
+          <p class="learn">Bij overdracht gaat het om de lezer. Voordat we documentatie schreven, vroegen we eerst wie het zou lezen en wat die persoon al weet.</p>
+          <ul class="tags" aria-label="Technieken"><li>Go</li><li>SvelteKit</li><li>PostGIS</li><li>GeoServer</li><li>Docker</li><li>GitHub Actions</li><li>Grafana</li></ul>
+        </div>
+      </article>
+
+      <!-- Digitect -->
+      <article class="project" aria-labelledby="p3">
+        <div class="meta">
+          <div class="yearbox"><div class="year">2025</div><span class="kind">Onderzoeksstage</span></div>
+          <dl>
+            <div><dt>Organisatie</dt><dd>Digitect Innovation B.V.</dd></div>
+            <div><dt>Rol</dt><dd>Onderzoeksstagiair in het ontwikkelteam (derdejaars stage)</dd></div>
+            <div><dt>Resultaat</dt><dd>Onderzoeksrapport, proof-of-concept en advies</dd></div>
+          </dl>
+        </div>
+        <div class="main">
+          <div>
+            <p class="label">Onderzoeksstage · Digitect Innovation</p>
+            <h3 id="p3" style="margin-top:8px">De EC-API-Design CLI laten praten met de GUI en een AI-agent</h3>
+          </div>
+          <p class="sub">Digitect maakt tools voor het modelleren van data en het genereren van API-contracten. Ik onderzocht hoe hun command line tool op de achtergrond kan blijven draaien en via gRPC kan communiceren met de grafische interface en een AI-agent.</p>
+          <div class="sides">
+            <div class="side p">
+              <h4>De mensen</h4>
+              <ul>
+                <li>Hoofdvraag opgesplitst in tien deelvragen, steeds afgestemd met de developers</li>
+                <li>Managementsamenvatting die zonder technische voorkennis te lezen is</li>
+                <li>Aanbevelingen voor de korte en lange termijn, met prioriteiten</li>
+                <li>Risico's benoemd, zoals een datalek als de AI-agent bij het internet kan</li>
+              </ul>
+            </div>
+            <div class="side c">
+              <h4>De techniek</h4>
+              <ul>
+                <li>gRPC met Unary RPC over HTTP/2</li>
+                <li>Protocol Buffers (proto3) als berichtformaat tussen GUI en CLI</li>
+                <li>Zelfgebouwde daemon-modus in Go</li>
+                <li>Goroutines en channels voor gelijktijdige verzoeken, plus in-memory caching</li>
+                <li>Keep-alive zodat GUI en AI-agent weten dat de CLI actief is; testen met Postman</li>
+              </ul>
+            </div>
+          </div>
+          <p class="learn">Ik leerde dat een onderzoek pas af is als de opdrachtgever weet wat hij ermee moet doen.</p>
+          <ul class="tags" aria-label="Technieken"><li>Go</li><li>gRPC</li><li>Protobuf</li><li>TypeScript / Theia</li><li>Postman</li></ul>
+          <p class="note">De code valt onder geheimhouding. Ik vertel er graag meer over in een gesprek.</p>
+        </div>
+      </article>
+
+      <!-- Herinner je ritmes -->
+      <article class="project" aria-labelledby="p4">
+        <div class="meta">
+          <div class="year">2024</div>
+          <dl>
+            <div><dt>Opdrachtgever</dt><dd>Sogeti</dd></div>
+            <div><dt>Doelgroep</dt><dd>Mensen met dementie, hun zorgverleners en mantelzorgers</dd></div>
+            <div><dt>Mijn rol</dt><dd>Developer en scrum master</dd></div>
+          </dl>
+        </div>
+        <div class="main">
+          <div>
+            <p class="label">Herinner je ritmes</p>
+            <h3 id="p4" style="margin-top:8px">Muziek als geheugensteun bij dementie</h3>
+          </div>
+          <p class="sub">Muziek kan herinneringen en structuur teruggeven aan mensen met dementie. We ontwierpen een app waarin bewoners favoriete muziek, herinneringen en dagelijkse taken aan elkaar koppelen, en waarin zorgverleners zien hoe het met iemand gaat.</p>
+          <div class="sides">
+            <div class="side p">
+              <h4>De mensen</h4>
+              <ul>
+                <li>Interviewvragen opgesteld en een interview in een verzorgingstehuis uitgewerkt</li>
+                <li>Contact gelegd met mantelzorgers</li>
+                <li>Persona's voor bewoner, familielid en zorgverlener</li>
+                <li>Ontwerp afgestemd op de doelgroep: grote knoppen, kleur bij emoties, weinig keuzes tegelijk</li>
+                <li>Als scrum master de dagelijkse stand-ups geleid</li>
+              </ul>
+            </div>
+            <div class="side c">
+              <h4>De techniek</h4>
+              <ul>
+                <li>Backend in Java 19 met Spring Boot 3</li>
+                <li>PostgreSQL met JPA, H2 voor tests</li>
+                <li>Herinneringen per e-mail via Postmark</li>
+                <li>Use-case diagram en conceptueel klassendiagram</li>
+                <li>Eerste schermontwerpen in Figma</li>
+              </ul>
+            </div>
+          </div>
+          <p class="learn">Hier merkte ik voor het eerst hoe belangrijk goede communicatie met een opdrachtgever is, juist omdat die in het begin stroef liep.</p>
+          <ul class="tags" aria-label="Technieken"><li>Java</li><li>Spring Boot</li><li>PostgreSQL</li><li>Figma</li><li>Scrum</li></ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="path" id="opleiding" aria-labelledby="path-title">
+    <div class="wrap">
+      <div class="path-head">
+        <p class="label">Opleiding en ervaring</p>
+        <h2 id="path-title" style="margin-top:12px">Mijn route tot nu toe</h2>
+        <ul class="langs" aria-label="Talen"><li><strong>Nederlands</strong> moedertaal</li><li><strong>Engels</strong> B2</li></ul>
+      </div>
+      <ol class="timeline">
+        <li class="t-edu">
+          <span class="when">2022 – 2027</span>
+          <div><h3>HBO-ICT, Software Development</h3><p class="where">Hogeschool Utrecht</p><p>Nu in mijn afstudeerfase bij de academische werkplaats Affect-us. Eerder een onderzoeksstage bij Digitect Innovation.</p></div>
+        </li>
+        <li class="t-work">
+          <span class="when">Tijdens studie</span>
+          <div><h3>Secretaris, bestuur ICT-studievereniging</h3><p class="where">Indicium</p><p>Als bestuurslid droeg ik brede verantwoordelijkheden en ontwikkelde ik mijn vaardigheden in leiderschap, communicatie en planning.</p></div>
+        </li>
+        <li class="t-work">
+          <span class="when">2022 – 2026</span>
+          <div><h3>Horecamedewerker</h3><p class="where">Meerdere bedrijven</p><p>Gasten helpen in drukke omgevingen, met een sterke focus op klantgerichtheid, flexibiliteit en samenwerken.</p></div>
+        </li>
+        <li class="t-edu">
+          <span class="when">2017 – 2022</span>
+          <div><h3>Havo, Natuur &amp; Techniek / Natuur &amp; Gezondheid</h3><p class="where">Christelijk Lyceum Zeist</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="how band" id="werkwijze" aria-labelledby="how-title">
+    <div class="wrap">
+      <p class="label">Werkwijze</p>
+      <h2 id="how-title" style="margin-top:12px">Wat ik meeneem naar een team</h2>
+      <div class="how-grid">
+        <div class="how-item">
+          <span class="from">Herinner je ritmes · DRAS-RT</span>
+          <h3>Eerst luisteren, dan bouwen</h3>
+          <p>Interviews, persona's en een stakeholderanalyse geven het team een gedeeld beeld van wie de gebruiker is, voordat er code geschreven wordt.</p>
+        </div>
+        <div class="how-item">
+          <span class="from">Affect-us · Herinner je ritmes</span>
+          <h3>Wensen vertalen naar stories</h3>
+          <p>"Als onderzoeker wil ik..., zodat...". Ik schrijf user stories met uitzonderingen en een definition of ready, zodat developers weten wat ze moeten bouwen.</p>
+        </div>
+        <div class="how-item">
+          <span class="from">Digitect · DRAS-RT</span>
+          <h3>Schrijven voor de lezer</h3>
+          <p>Een managementsamenvatting voor de directie en een runbook voor de beheerder vragen om een andere toon. Ik pas mijn tekst aan op wie hem leest.</p>
+        </div>
+        <div class="how-item">
+          <span class="from">Herinner je ritmes</span>
+          <h3>Het team in beweging houden</h3>
+          <p>Als scrum master hield ik de stand-ups bij, signaleerde ik waar de communicatie met de opdrachtgever stokte en zorgde ik dat de planning zichtbaar bleef.</p>
+        </div>
+      </div>
+
+      <div class="tools" aria-label="Technieken en methodes">
+        <div><p class="label">Talen</p><ul class="tags"><li>Go</li><li>Java</li><li>Python</li><li>TypeScript</li><li>SQL</li></ul></div>
+        <div><p class="label">Frameworks</p><ul class="tags"><li>Spring Boot</li><li>FastAPI</li><li>SvelteKit</li><li>Streamlit</li><li>gRPC</li></ul></div>
+        <div><p class="label">Infra &amp; data</p><ul class="tags"><li>Docker</li><li>GitHub Actions</li><li>PostgreSQL</li><li>PostGIS</li><li>Nginx</li></ul></div>
+        <div><p class="label">Mens &amp; proces</p><ul class="tags"><li>Interviews</li><li>Persona's</li><li>Stakeholderanalyse</li><li>Scrum</li><li>Adviesrapport</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="cintro">
+      <p class="label">Contact</p>
+      <h2 id="contact-title">Zoekt u iemand die de techniek snapt en graag het gesprek aangaat?</h2>
+      <p>Ik ben op zoek naar mijn eerste baan in de ICT, het liefst in een rol waarin ik dicht bij gebruikers, klanten of opdrachtgevers werk.</p>
+      <p>Mijn opleiding was vooral technisch. De communicatieve kant heb ik tot nu toe in mijn projecten geleerd, en daar wil ik nog veel in groeien. Daarom zoek ik een plek waar ik ook kan blijven leren, bijvoorbeeld via een traineeship, trainingen of een ervaren collega die me begeleidt. Zo kan ik doen wat ik het leukst vind. Ik maak graag kennis.</p>
+      </div>
+      <ul class="cards" aria-label="Contactgegevens">
+        <li class="ccard">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 12v6M9 15l3 3 3-3"/></svg></span>
+          <span class="cbody"><span class="label">Curriculum vitae</span><span class="val">CV Krista Schouwstra (PDF)</span></span>
+          <a class="cbtn" href="CV-Krista-Schouwstra.pdf" target="_blank" rel="noopener">Download</a>
+        </li>
+        <li class="ccard">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <span class="cbody"><span class="label">E-mail</span><span class="val" id="mail">kristaschouwstra@gmail.com</span></span>
+          <button class="cbtn" type="button" data-copy="mail" aria-label="Kopieer e-mailadres">Kopieer</button>
+        </li>
+        <li class="ccard">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+          <span class="cbody"><span class="label">Telefoon</span><a class="val" id="phone" href="tel:+31639385175" style="color:inherit;text-decoration:none">06-39385175</a></span>
+          <button class="cbtn" type="button" data-copy="phone" aria-label="Kopieer telefoonnummer">Kopieer</button>
+        </li>
+        <li class="ccard">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></svg></span>
+          <span class="cbody"><span class="label">LinkedIn</span><span class="val">Krista Schouwstra</span></span>
+          <a class="cbtn" href="https://www.linkedin.com/in/krista-schouwstra-455728248/" target="_blank" rel="noopener">Bekijk profiel</a>
+        </li>
+      </ul>
+      <p class="copied" id="copied" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Krista Schouwstra · HBO-ICT Software Development, Hogeschool Utrecht</span>
+    <a href="#top">Terug naar boven</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var el = document.getElementById(btn.dataset.copy);
+    var out = document.getElementById('copied');
+    function done(){ btn.textContent = 'Gekopieerd'; btn.classList.add('done'); out.textContent = '';
+      setTimeout(function(){ btn.textContent = 'Kopieer'; btn.classList.remove('done'); }, 1800); }
+    function fallback(){
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      out.textContent = 'Geselecteerd, druk op Ctrl+C om te kopiëren';
+    }
+    try{ navigator.clipboard.writeText(el.textContent).then(done, fallback); }catch(e){ fallback(); }
+  });
+});
+</script>
+</body>
+</html>
