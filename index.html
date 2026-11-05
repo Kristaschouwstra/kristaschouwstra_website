@@ -8,8 +8,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Krista Schouwstra, software developer">
 <meta property="og:description" content="Software developer met een hart voor mensen en techniek. Bekijk mijn projecten en neem contact op.">
-<meta property="og:image" content="https://kristaschouwstra.github.io/preview.jpg">
-<meta property="og:url" content="https://kristaschouwstra.github.io/">
+<meta property="og:image" content="https://kristaschouwstra.github.io/kristaschouwstra_website/preview.jpg">
+<meta property="og:url" content="https://kristaschouwstra.github.io/kristaschouwstra_website/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2316202E'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23F7E6EE'%3EKS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,27 +60,26 @@ nav a:hover{color:var(--ink)}
 .hero h1{font-size:clamp(2.3rem,5.4vw,4.1rem);font-weight:800}
 .hero h1 .p{color:var(--people)} .hero h1 .c{color:var(--code)}
 .hero .lead{margin-top:22px;font-size:1.2rem;color:var(--muted);max-width:36em}
-.hero .who{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 24px}
-.hero .who div{display:flex;flex-direction:column;gap:2px}
-.hero .who strong{font-weight:700}
 .actions{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--ink);font-size:.98rem;background:transparent;color:var(--ink);cursor:pointer;font-family:var(--body)}
 .btn.solid{background:var(--ink);color:var(--bg)}
 .btn:hover{transform:translateY(-1px)}
 
-/* the translation exhibit */
-.exhibit{display:flex;flex-direction:column;gap:14px;min-width:0}
-.bubble{background:var(--people-soft);color:var(--ink);border-radius:18px 18px 18px 4px;padding:16px 18px;max-width:92%}
-.bubble.answer{align-self:flex-end;border-radius:18px 18px 4px 18px;background:var(--surface);border:1px solid var(--line)}
-.bubble .label{display:block;margin-bottom:4px}
-.bubble.q .label{color:var(--people)}
-.term{background:var(--code-soft);border-radius:14px;padding:14px 16px;font-family:var(--mono);font-size:.9rem;color:var(--ink);overflow-x:auto}
-.term .label{color:var(--code);display:block;margin-bottom:6px;font-size:.7rem}
-.term code::before{content:"$ ";color:var(--code)}
-.exhibit .cap{font-size:.85rem;color:var(--muted)}
-.exhibit > *{animation:rise .6s both}
-.exhibit > *:nth-child(2){animation-delay:.25s}.exhibit > *:nth-child(3){animation-delay:.5s}.exhibit > *:nth-child(4){animation-delay:.7s}
-@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+/* in het kort */
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 28px 12px;box-shadow:0 1px 2px rgba(20,30,50,.05),0 18px 40px -24px rgba(20,30,50,.25);min-width:0;position:relative;overflow:hidden}
+.brief::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--people),var(--code))}
+.brief h2.label{font-family:var(--mono);font-size:.75rem;font-weight:500;letter-spacing:.08em;margin-bottom:8px}
+.brief dl{margin:0;display:flex;flex-direction:column}
+.brief dl > div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.brief dl > div:first-child{border-top:0}
+.brief dt{font-weight:700;font-size:.95rem}
+.brief dd{margin:0;min-width:0;font-size:.98rem}
+.brief .muted{display:block;color:var(--muted);font-family:var(--mono);font-size:.8rem;margin-top:2px}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.chips li{font-size:.85rem;padding:3px 10px;border-radius:999px}
+.chips .c{background:var(--code-soft);color:var(--code)}
+.chips .p{background:var(--people-soft);color:var(--people)}
+@media (max-width:420px){.brief{padding:22px 18px 8px}.brief dl > div{grid-template-columns:1fr;gap:4px}}
 
 /* vision */
 section{scroll-margin-top:72px}
@@ -120,11 +119,6 @@ section{scroll-margin-top:72px}
 .learn{border-left:3px solid var(--people);padding-left:16px;max-width:44em;font-style:italic}
 .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
 .tags li{font-family:var(--mono);font-size:.78rem;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--surface)}
-figure{margin:0;display:flex;flex-direction:column;gap:8px}
-figure .frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-figure img{display:block;width:100%;height:auto}
-figcaption{font-size:.85rem;color:var(--muted)}
-.link{font-weight:700;color:var(--code);text-decoration:none;border-bottom:2px solid currentColor;align-self:flex-start}
 .note{font-size:.9rem;color:var(--muted)}
 
 /* me */
@@ -238,12 +232,16 @@ footer .wrap{padding-block:24px;display:flex;justify-content:space-between;gap:1
         </div>
       </div>
 
-      <div class="exhibit" aria-label="Voorbeeld uit het DRAS-RT project: een vraag aan de opdrachtgever wordt een technische eis">
-        <div class="bubble q"><span class="label">Ons team vraagt de opdrachtgever</span>Wanneer is de overdracht van het systeem geslaagd?</div>
-        <div class="bubble answer"><span class="label">Opdrachtgever</span>Als de ontvanger het systeem kan opstarten en een database dump kan importeren. Dat is het enige harde criterium.</div>
-        <div class="term"><span class="label">Wordt in de repository</span><code>docker compose up -d</code></div>
-        <p class="cap">Uit het overdrachtsinterview van DRAS-RT. Eén antwoord bepaalde hoe we de hele repository inrichtten.</p>
-      </div>
+      <aside class="brief" aria-labelledby="brief-title">
+        <h2 id="brief-title" class="label">In het kort</h2>
+        <dl>
+          <div><dt>Nu</dt><dd>Afstuderen bij de academische werkplaats Affect-us</dd></div>
+          <div><dt>Opleiding</dt><dd>HBO-ICT Software Development, Hogeschool Utrecht <span class="muted">2022 – 2027</span></dd></div>
+          <div><dt>Ik zoek</dt><dd>Een startersfunctie waarin ICT en communicatie samenkomen, met ruimte om te leren</dd></div>
+          <div><dt>Sterk in</dt><dd><ul class="chips"><li class="c">Java</li><li class="c">Python</li><li class="c">Go</li><li class="p">Interviews</li><li class="p">Stakeholders</li><li class="p">Scrum</li></ul></dd></div>
+          <div><dt>Beschikbaar</dt><dd>Direct inzetbaar</dd></div>
+        </dl>
+      </aside>
     </div>
   </section>
 
